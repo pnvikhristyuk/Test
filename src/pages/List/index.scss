@@ -1,0 +1,23 @@
+.products {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .product {
+      width: calc(50% - 10px);
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    align-items: center;
+
+    .title {
+      margin-bottom: 0;
+    }
+  }
+
+}

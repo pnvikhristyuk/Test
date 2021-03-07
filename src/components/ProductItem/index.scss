@@ -1,0 +1,41 @@
+.product {
+  display: flex;
+  align-content: center;
+  background: rgba(40, 43, 58, 0.7);
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  &__img {
+    width: 150px;
+    min-height: 150px;
+    background-position: 50% 50%;
+    background-size: cover;
+  }
+
+  &__description-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__description-label {
+    font-size: 13px;
+    margin-right: 15px;
+    //opacity: 0.75;
+    color: #7880a4;
+  }
+
+  &__description-value {
+    font-weight: 700;
+    color: #b68fff;
+  }
+
+  &__description {
+    padding: 20px;
+    flex: 1 1 0;
+  }
+}

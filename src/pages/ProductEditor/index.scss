@@ -1,0 +1,15 @@
+.edit-page {
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+
+    .title {
+      margin-bottom: 0;
+    }
+
+    .btn-holder {
+      margin-right: 40px;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.editor {
+  &__body {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__body-left {
+    width: 50%;
+    padding-right: 30px;
+  }
+
+  &__row {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+
+    input {
+      padding: 10px 15px;
+      font: inherit;
+      background: #2e3244;
+      color: #fff;
+      border: 1px solid #2e3244;
+      width: 100%;
+      transition: border-color 0.25s linear 0s;
+
+      &:focus,
+      &:active {
+        border-color: #b68fff;
+      }
+    }
+  }
+
+  &__body-img-preview {
+    padding-top: 25%;
+    width: 25%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #1F2233;
+  }
+
+  &__label {
+    min-width: 100px;
+    text-align: right;
+    padding-right: 15px;
+    color: #7880a4;
+    font-size: 14px;
+  }
+
+  &__input-holder {
+    flex: 1;
+  }
+}
