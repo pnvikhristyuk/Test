@@ -7,44 +7,59 @@ import {
 
 import Faker from 'faker';
 
-let productsList = [];
 
-for (let i = 0; i < 10; i++) {
-    productsList.push({
-        name: Faker.lorem.words(),
-        image: Faker.image.imageUrl(),
-        sku: Faker.address.zipCode(),
-        id: Faker.address.zipCode(),
-        available: Faker.random.number(),
-        price: String(Faker.random.number()) + '.00'
-    })
-}
+const getProductList = () => {
+    let productsList = [];
 
-const products = (state = [], action) => {
+    for (let i = 0; i < 10; i++) {
+        productsList.push({
+            name: Faker.lorem.words(),
+            image: Faker.image.imageUrl(),
+            sku: Faker.address.zipCode(),
+            id: Faker.address.zipCode(),
+            available: Faker.random.number(),
+            price: String(Faker.random.number()) + '.00'
+        })
+    }
+
+    return productsList;
+};
+
+
+const initialState = getProductList();
+
+
+const products = (state = initialState, action) => {
     switch (action.type) {
         case GET_PRODUCTS:
-            return productsList;
+            return state;
 
         case EDIT_PRODUCT:
-            const product = productsList.find(item => item.id === action.id);
-
-            product.name = action.newProps.name;
-            product.sku = action.newProps.sku;
-            product.price = action.newProps.price;
-            product.available = action.newProps.available;
-            product.image = action.newProps.image;
-
-            return productsList;
+            return state.map(item => {
+                if (item.id !== action.id) return item;
+                return ({
+                    id: item.id,
+                    name: action.newProps.name,
+                    sku: action.newProps.sku,
+                    price: action.newProps.price,
+                    available: action.newProps.available,
+                    image: action.newProps.image,
+                });
+            });
 
         case REMOVE_PRODUCT:
-            return productsList = productsList.filter(item => item.id !== action.id);
+            return state.filter(item => item.id !== action.id);
 
         case ADD_PRODUCT:
             const {name, image, sku, available, price} = action.product;
-            productsList.push({name, image, sku, available, price, id: Faker.address.zipCode()});
-            
-            return productsList;
-
+            return state.concat({
+                name,
+                image,
+                sku,
+                available,
+                price,
+                id: Faker.address.zipCode()
+            });
         default:
             return state;
     }
