@@ -33,7 +33,7 @@ const Editor = ({
             sku,
             image,
             available,
-            price: Number.isInteger(Number(price)) ? String(!!price.length ? price : 0) + '.00' : price
+            price: Number.isInteger(isNaN(Number(price)) ? 0 : Number(price)) ? (String(!!price.length ? Number(price) : 0) + '.00') : price
         })
     };
 
