@@ -35,7 +35,7 @@ const ProductEditor = (props) => {
         <div className="container edit-page">
             <div className="edit-page__header">
                 <div className="btn-holder">
-                    <button className="btn btn_gray" onClick={() => history.push(`/product-page/id=${currentProduct.id}`)}>&larr; Back to product page</button>
+                    <button className="btn btn_gray" onClick={() => history.push(`/product-page/id=${currentProduct.id}`)}>&larr; Back to the product page</button>
                 </div>
                 <h1 className="title">Product Editor</h1>
             </div>
