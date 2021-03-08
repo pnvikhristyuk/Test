@@ -6,20 +6,34 @@ const Editor = ({
         result = () => {}
     }) => {
 
+    const [error, setError] = useState(false);
+
     const [image, setImage] = useState(product.image);
     const [name, setName] = useState(product.name);
     const [sku, setSku] = useState(product.sku);
     const [price, setPrice] = useState(product.price);
     const [available, setAvailable] = useState(product.available);
 
-    // handlers
+    // handler
     const handleSave = () => {
+        if (!name.length) {
+            setError('Please, enter the field "Name"');
+            return;
+        }
+
+        if (!sku.length) {
+            setError('Please, enter the field "SKU"');
+            return;
+        }
+
+        !!error && setError(false);
+
         result({
             name,
             sku,
             image,
             available,
-            price: Number.isInteger(Number(price)) ? String(price) + '.00' : price
+            price: Number.isInteger(Number(price)) ? String(!!price.length ? price : 0) + '.00' : price
         })
     };
 
@@ -28,13 +42,13 @@ const Editor = ({
             <div className="editor__body">
                 <div className="editor__body-left">
                     <div className="editor__row">
-                        <div className="editor__label">Name:</div>
+                        <div className="editor__label">Name: *</div>
                         <div className="editor__input-holder">
                             <input type="text" onChange={e => setName(e.target.value)} value={name}/>
                         </div>
                     </div>
                     <div className="editor__row">
-                        <div className="editor__label">SKU:</div>
+                        <div className="editor__label">SKU: *</div>
                         <div className="editor__input-holder">
                             <input type="text" onChange={e => setSku(e.target.value)} value={sku}/>
                         </div>
@@ -60,6 +74,7 @@ const Editor = ({
                 </div>
                 <div className="editor__body-img-preview" style={{backgroundImage: `url(${image})`}}/>
             </div>
+            {error && <div className="editor__error">{error}</div>}
             <div className="btn-holder">
                 <button className="btn" onClick={handleSave}>Save changes</button>
             </div>

@@ -4,10 +4,10 @@ import './App.scss';
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
+    Route
 } from "react-router-dom";
 
+import Header from './components/Header';
 import Products from './pages/List';
 import ProductPage from './pages/ProductPage';
 import ProductEditor from './pages/ProductEditor';
@@ -19,11 +19,7 @@ function App() {
     return (
         <div className="app">
             <Router>
-                <header className="header">
-                    <div className="header__holder container">
-                        <Link to={'/'} className="header__logo">Header logo</Link>
-                    </div>
-                </header>
+                <Header />
                 <Switch>
                     <Route path='/' exact component={Products}/>
                     <Route path='/product-page/id=:id' exact component={ProductPage}/>

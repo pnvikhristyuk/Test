@@ -79,6 +79,12 @@ img {
     text-indent: -9999px;
     background: url(./assets/images/logo.png) no-repeat 50% 50% / cover;
   }
+
+  &__holder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .btn-holder {

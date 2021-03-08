@@ -5,15 +5,12 @@ import { useHistory } from 'react-router-dom';
 import Editor from '../../components/Editor';
 
 
-import {getProductsList, addNewProduct} from "../../redux/actions";
-import {useDispatch, useSelector} from "react-redux";
+import {addNewProduct} from "../../redux/actions";
+import {useDispatch} from "react-redux";
 
 const AddNew = (props) => {
     //redux
-    const products = useSelector(state => state.products);
     const dispatch = useDispatch();
-
-    //if product is absent
     const history = useHistory();
 
 

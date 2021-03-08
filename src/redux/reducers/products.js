@@ -40,14 +40,8 @@ const products = (state = [], action) => {
             return productsList = productsList.filter(item => item.id !== action.id);
 
         case ADD_PRODUCT:
-            productsList.push({
-                name: action.product.name,
-                image: action.product.image,
-                sku: action.product.sku,
-                available: action.product.available,
-                price: action.product.price,
-                id: Faker.address.zipCode()
-            });
+            const {name, image, sku, available, price} = action.product;
+            productsList.push({name, image, sku, available, price, id: Faker.address.zipCode()});
             
             return productsList;
 

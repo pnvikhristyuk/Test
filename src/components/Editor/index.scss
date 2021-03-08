@@ -51,4 +51,9 @@
   &__input-holder {
     flex: 1;
   }
+
+  &__error {
+    color: #ff0000;
+    margin-bottom: 30px;
+  }
 }
